@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday, Pumkin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <canvas id="fx-canvas" aria-hidden="true"></canvas>
+
+  <div class="ambient-hearts" aria-hidden="true">
+    <span>&#10084;</span>
+    <span>&#10084;</span>
+    <span>&#10084;</span>
+    <span>&#10084;</span>
+    <span>&#10084;</span>
+    <span>&#10084;</span>
+  </div>
+
+  <main class="app">
+    <section class="story-card">
+      <header class="story-header">
+        <div>
+          <p class="eyebrow">Birthday Story</p>
+          <p class="header-note">A gentle little experience made for Pumkin</p>
+        </div>
+        <button id="music-toggle" class="ghost-button" type="button" aria-pressed="false">
+          Soft Music: Off
+        </button>
+      </header>
+
+      <div class="progress-panel" aria-label="Story progress">
+        <div class="progress-copy">
+          <span id="scene-counter">Scene 1 of 5</span>
+          <span id="scene-name">Welcome</span>
+        </div>
+        <div class="progress-bar">
+          <span id="progress-fill"></span>
+        </div>
+      </div>
+
+      <section class="scene is-active" data-scene="welcome">
+        <div class="scene-content scene-center">
+          <p class="scene-kicker">Scene 1</p>
+          <h1>Happy Birthday Pumpkin &#10084;&#65039;&#128149;</h1>
+          <p class="scene-copy intro-copy">
+            This little web app is your birthday story in motion. It starts softly, moves through sweet memories,
+            plays around a little, and ends with a celebration made just for you.
+          </p>
+          <div class="button-row button-row-center">
+            <button id="start-btn" class="primary-button" type="button">Start</button>
+            <button id="welcome-music-btn" class="secondary-button" type="button">Play Soft Music</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="scene" data-scene="story">
+        <div class="scene-content story-layout">
+          <div class="story-copy">
+            <p class="scene-kicker">Scene 2</p>
+            <h2>How we met this year</h2>
+            <p class="scene-copy">
+              We met this year, and somehow it already feels like the story came with its own soundtrack.
+              It was easy to laugh, easy to talk, and easy to want more time together.
+            </p>
+            <p class="scene-copy">
+              Then came Carnival City. We had fun, walked around, and played go-karts like we had something to prove.
+              You looked cute, the energy was high, and the whole day felt like one of those memories you know you will keep.
+            </p>
+            <div class="story-highlight">
+              <strong>Best playful part:</strong>
+              <p>
+                The go-karts were chaos in the sweetest way because you crashed a few times. Not dramatic crashes,
+                just enough to make us laugh and make the story even better.
+              </p>
+            </div>
+            <div class="button-row">
+              <button id="story-next-btn" class="primary-button" type="button">Continue to Memory Lane</button>
+            </div>
+          </div>
+
+          <aside class="photo-panel">
+            <div class="photo-frame">
+              <img
+                src="WhatsApp Image 2026-04-02 at 23.18.03.jpeg"
+                alt="A special memory from Carnival City"
+              >
+            </div>
+            <p class="photo-caption">One special photo from a fun day together.</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="scene" data-scene="memory">
+        <div class="scene-content">
+          <p class="scene-kicker">Scene 3</p>
+          <h2>Memory Lane</h2>
+          <p class="scene-copy">
+            Tap one memory at a time. Simple little moments can still say a lot.
+          </p>
+
+          <div class="memory-list" role="list">
+            <button class="memory-chip is-active" type="button" data-memory="0">First hello</button>
+            <button class="memory-chip" type="button" data-memory="1">Carnival City</button>
+            <button class="memory-chip" type="button" data-memory="2">Go-karts</button>
+            <button class="memory-chip" type="button" data-memory="3">Birthday energy</button>
+          </div>
+
+          <div class="memory-panel">
+            <h3 id="memory-title">First hello</h3>
+            <p id="memory-text" class="scene-copy">
+              Sometimes the start is quiet, but you still feel it. That first hello already carried something sweet.
+            </p>
+          </div>
+
+          <div class="button-row">
+            <button id="memory-next-btn" class="primary-button" type="button">Continue</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="scene" data-scene="tease">
+        <div class="scene-content">
+          <p class="scene-kicker">Scene 4</p>
+          <h2>A little teasing</h2>
+
+          <div class="typing-panel">
+            <p id="typing-text" class="typing-text"></p>
+            <span class="typing-caret" aria-hidden="true"></span>
+          </div>
+
+          <div class="analysis-panel">
+            <div class="analysis-top">
+              <strong>Heart analysis</strong>
+              <span id="analysis-value">Waiting...</span>
+            </div>
+            <div class="analysis-bar">
+              <span id="analysis-fill"></span>
+            </div>
+            <p id="analysis-text" class="analysis-copy">
+              Pick a response and let the very serious birthday scanner investigate.
+            </p>
+          </div>
+
+          <div class="tease-actions">
+            <button class="reply-button" type="button" data-reply="not-answering">I'm not answering</button>
+            <button class="reply-button" type="button" data-reply="mind-business">Mind your business</button>
+            <button class="reply-button" type="button" data-reply="okay-fine">Okay fine</button>
+          </div>
+
+          <div id="runner-zone" class="runner-zone">
+            <button id="runner-btn" class="reply-button runner-button" type="button">Definitely not him</button>
+          </div>
+
+          <p id="tease-response" class="tease-response"></p>
+
+          <div id="warm-note" class="warm-note" hidden>
+            <strong>Teasing over, soft message on.</strong>
+            <p>
+              Jokes aside, your heart deserves something kind, steady, and real. You deserve joy, warmth,
+              and a birthday filled with love that feels easy to receive.
+            </p>
+          </div>
+
+          <div class="button-row">
+            <button id="tease-next-btn" class="primary-button" type="button" disabled>Go to Celebration</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="scene" data-scene="celebration">
+        <div class="scene-content scene-center celebration-layout">
+          <p class="scene-kicker">Scene 5</p>
+          <h2>Happy Birthday, Pumkin</h2>
+          <p class="scene-copy celebration-copy">
+            May your year be full of peace, laughter, beautiful surprises, and love that feels safe and true.
+            Thank you for being soft, funny, lovely, and unforgettable.
+          </p>
+          <p class="scene-copy celebration-copy">
+            You made this year brighter. You made these memories sweeter. And today, you deserve to feel celebrated all the way through.
+          </p>
+          <div class="button-row button-row-center">
+            <button id="celebrate-btn" class="primary-button" type="button">Celebrate Again</button>
+            <button id="replay-btn" class="secondary-button" type="button">Replay Story</button>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
